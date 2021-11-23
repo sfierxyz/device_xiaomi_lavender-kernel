@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 #ifndef _LINUX_SOCKET_H
 #define _LINUX_SOCKET_H
 
@@ -7,8 +8,6 @@
 #define _K_SS_MAXSIZE	128	/* Implementation specific max size */
 #define _K_SS_ALIGNSIZE	(__alignof__ (struct sockaddr *))
 				/* Implementation specific desired alignment */
-
-#define sockaddr_storage __kernel_sockaddr_storage
 
 typedef unsigned short __kernel_sa_family_t;
 

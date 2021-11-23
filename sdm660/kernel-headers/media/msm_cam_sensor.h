@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
 #ifndef __UAPI_LINUX_MSM_CAM_SENSOR_H
 #define __UAPI_LINUX_MSM_CAM_SENSOR_H
 
@@ -666,4 +667,3 @@ struct msm_actuator_cfg_download_data {
 	_IOWR('V', BASE_VIDIOC_PRIVATE + 17, struct msm_actuator_cfg_download_data)
 #endif
 #endif
-

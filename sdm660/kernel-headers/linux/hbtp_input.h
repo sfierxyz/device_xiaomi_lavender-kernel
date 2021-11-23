@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
 #ifndef _HBTP_INPUT_H
 #define _HBTP_INPUT_H
 

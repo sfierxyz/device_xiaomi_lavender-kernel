@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
 #ifndef __UAPI_LINUX_MSM_CAMSENSOR_SDK_H
 #define __UAPI_LINUX_MSM_CAMSENSOR_SDK_H
 
@@ -248,10 +249,10 @@ struct msm_sensor_power_setting {
 
 struct msm_sensor_power_setting_array {
 	struct msm_sensor_power_setting  power_setting_a[MAX_POWER_CONFIG];
-	struct msm_sensor_power_setting *power_setting;
+	struct msm_sensor_power_setting  *power_setting;
 	unsigned short size;
 	struct msm_sensor_power_setting  power_down_setting_a[MAX_POWER_CONFIG];
-	struct msm_sensor_power_setting *power_down_setting;
+	struct msm_sensor_power_setting  *power_down_setting;
 	unsigned short size_down;
 };
 
@@ -459,8 +460,8 @@ struct damping_params_t {
 
 struct region_params_t {
 	/* [0] = ForwardDirection Macro boundary
-	   [1] = ReverseDirection Inf boundary
-	*/
+	 *  [1] = ReverseDirection Inf boundary
+	 */
 	unsigned short step_bound[2];
 	unsigned short code_per_step;
 	/* qvalue for converting float type numbers to integer format */
