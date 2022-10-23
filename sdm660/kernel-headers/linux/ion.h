@@ -12,6 +12,51 @@
 typedef int ion_user_handle_t;
 
 /**
+ * struct ion_old_allocation_data - metadata passed from legacy (pre-4.12 kernel)
+ * 				       userspace for allocations
+ * @len:		size of the allocation
+ * @align:		required alignment of the allocation
+ * @heap_id_mask:	mask of heap ids to allocate from
+ * @flags:		flags passed to heap
+ * @handle:		pointer that will be populated with a cookie to use to
+ *			refer to this allocation
+ *
+ * Provided by userspace as an argument to the ioctl
+ */
+struct ion_old_allocation_data {
+	size_t len;
+	size_t align;
+	unsigned int heap_id_mask;
+	unsigned int flags;
+	ion_user_handle_t handle;
+};
+
+/**
+ * struct ion_fd_data - metadata passed to/from userspace for a handle/fd pair
+ * @handle:	a handle
+ * @fd:		a file descriptor representing that handle
+ *
+ * For ION_IOC_SHARE or ION_IOC_MAP userspace populates the handle field with
+ * the handle returned from ion alloc, and the kernel returns the file
+ * descriptor to share or map in the fd field.  For ION_IOC_IMPORT, userspace
+ * provides the file descriptor and the kernel returns the handle.
+ */
+struct ion_fd_data {
+	ion_user_handle_t handle;
+	int fd;
+};
+
+/**
+ * struct ion_handle_data - a handle passed to/from the kernel
+ * @handle:	a handle
+ */
+struct ion_handle_data {
+	ion_user_handle_t handle;
+};
+
+#define ION_IOC_FREE	_IOWR(ION_IOC_MAGIC, 1, struct ion_handle_data)
+
+/**
  * enum ion_heap_types - list of all possible types of heaps
  * @ION_HEAP_TYPE_SYSTEM:	 memory allocated via vmalloc
  * @ION_HEAP_TYPE_SYSTEM_CONTIG: memory allocated via kmalloc
